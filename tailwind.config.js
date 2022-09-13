@@ -12,6 +12,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                rammetto: ['Rammetto'],
+            },
+            colors: {
+                'dark_red': '#8E0E00',
+                'almost_black': '#1F1C18',
             },
         },
     },
