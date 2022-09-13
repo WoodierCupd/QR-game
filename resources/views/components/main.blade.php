@@ -1,3 +1,7 @@
-<div>
-    <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
+<div class="flex flex-1 flex-col justify-center items-center">
+    <h1 class="font-extrabold text-6xl mb-2.5">QR-Quiz</h1>
+    <div class="flex flex-col bg-white text-center p-5 rounded">
+        <input class="input h-10 text-black text-center mb-2.5 rounded !important" type="text" placeholder="Leerling nummer">
+        <button class="btn h-10 font-bold bg-black rounded">Bevestigen</button>
+    </div>
 </div>
