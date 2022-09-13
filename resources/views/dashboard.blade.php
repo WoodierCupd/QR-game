@@ -4,14 +4,13 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
+    <div class="container mx-auto">
+        <div class="mt-5 flex flex-col items-center">
+            <div class="flex flex-col">
+                <label class="" for="csv">Upload hier een <span class="font-bold">CSV</span> bestand met vragen.</label>
+                <input class="form-input m-0 p-2 rounded" name="csv" type="file">
             </div>
         </div>
     </div>
+
 </x-app-layout>
