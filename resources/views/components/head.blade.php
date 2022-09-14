@@ -13,4 +13,6 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+
+    @livewireStyles
 </head>

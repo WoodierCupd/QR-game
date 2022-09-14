@@ -5,5 +5,6 @@
         <x-header></x-header>
         <x-main></x-main>
         <x-footer></x-footer>
+        @livewireScripts
     </body>
 </html>
