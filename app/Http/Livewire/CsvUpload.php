@@ -6,6 +6,7 @@ use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CsvUpload extends Component
 {
@@ -39,14 +40,18 @@ class CsvUpload extends Component
         Storage::delete($file_name);
 
         foreach ($importData_arr as $importData) {
-            Question::create([
+            $question = Question::create([
                 'original_id' => $importData[0],
                 'question' => $importData[1],
                 'option_a' => $importData[2],
                 'option_b' => $importData[3],
                 'option_c' => $importData[4],
                 'answer' => $importData[5],
+                'qr_path' => 'test',
             ]);
+
+            QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images/qrcode_question_{$question['id']}.svg"));
+            Question::find($question['id'])->update(['qr_path' => public_path("images/qrcode_question_{$question['id']}.svg")]);
         }
     }
 
