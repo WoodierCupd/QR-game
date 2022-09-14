@@ -47,7 +47,6 @@ class CsvUpload extends Component
                 'option_b' => $importData[3],
                 'option_c' => $importData[4],
                 'answer' => $importData[5],
-                'qr_path' => 'test',
             ]);
 
             QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images/qrcode_question_{$question['id']}.svg"));

@@ -15,6 +15,6 @@ class Question extends Model
         'option_b',
         'option_c',
         'answer',
-        'qr_code',
+        'qr_path',
     ];
 }
