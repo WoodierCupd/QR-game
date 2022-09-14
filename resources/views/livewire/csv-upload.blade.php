@@ -1,4 +1,4 @@
-<div>
+<div style="max-width: 95%">
     <form wire:submit.prevent="save" class="flex flex-col">
         <label for="csv">Upload hier een <span class="font-bold">CSV</span> bestand met vragen.</label>
         <input wire:model="file" class="form-input m-0 p-1 rounded text-black h-10" name="csv" type="file">
