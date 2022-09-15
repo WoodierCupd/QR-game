@@ -52,6 +52,8 @@ class CsvUpload extends Component
             QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images/qrcode_question_{$question['id']}.svg"));
             Question::find($question['id'])->update(['qr_path' => public_path("images/qrcode_question_{$question['id']}.svg")]);
         }
+
+        session()->flash('message', 'Successfully added the QR-Codes');
     }
 
     public function render()
