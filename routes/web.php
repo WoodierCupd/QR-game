@@ -21,4 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/question/{question}', function (\App\Models\Question $question) {
+    return view('question')->with(compact('question'));
+})->middleware(['auth'])->name('question');
+
 require __DIR__.'/auth.php';
