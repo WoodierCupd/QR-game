@@ -51,7 +51,7 @@ class CsvUpload extends Component
             ]);
 
             QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images\qrcode_question_{$question['id']}.svg"));
-            Question::find($question['id'])->update(['qr_path' => public_path("images\qrcode_question_{$question['id']}.svg")]);
+            Question::find($question['id'])->update(['qr_path' => "images\qrcode_question_{$question['id']}.svg"]);
         }
 
         session()->flash('message', 'Successfully added the QR-Codes');
@@ -60,7 +60,7 @@ class CsvUpload extends Component
     public function deleteAll(){
         $questions = Question::all();
         foreach ($questions as $question){
-            File::delete($question['qr_path']);
+            File::delete(public_path($question['qr_path']));
             $question->delete();
         }
         session()->flash('message', 'Successfully deleted all QR-Codes');

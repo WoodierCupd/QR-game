@@ -3,9 +3,7 @@
     <x-head></x-head>
     <body class="container mx-auto bg-gradient-to-r from-dark_red to-almost_black text-white h-screen flex flex-col">
         <x-header></x-header>
-        <div class="mt-5 flex flex-col items-center">
-            <livewire:csv-upload/>
-        </div>
+        <livewire:csv-upload/>
         @livewireScripts
     </body>
 </html>
