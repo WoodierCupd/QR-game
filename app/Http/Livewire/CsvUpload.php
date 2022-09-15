@@ -14,6 +14,7 @@ class CsvUpload extends Component
     use WithFileUploads;
 
     public $file;
+    public $questions;
 
     public function save()
     {
@@ -69,6 +70,7 @@ class CsvUpload extends Component
 
     public function render()
     {
+        $this->questions = Question::all();
         return view('livewire.csv-upload');
     }
 }
