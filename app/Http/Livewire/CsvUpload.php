@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Question;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -49,11 +50,21 @@ class CsvUpload extends Component
                 'answer' => $importData[5],
             ]);
 
-            QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images/qrcode_question_{$question['id']}.svg"));
-            Question::find($question['id'])->update(['qr_path' => public_path("images/qrcode_question_{$question['id']}.svg")]);
+            QrCode::size(300)->generate("http://qr-game.test/question?id={$question['id']}", public_path("images\qrcode_question_{$question['id']}.svg"));
+            Question::find($question['id'])->update(['qr_path' => public_path("images\qrcode_question_{$question['id']}.svg")]);
         }
 
         session()->flash('message', 'Successfully added the QR-Codes');
+    }
+
+    public function deleteAll(){
+        $questions = Question::all();
+        foreach ($questions as $question){
+            File::delete($question['qr_path']);
+            $question->delete();
+        }
+        session()->flash('message', 'Successfully deleted all QR-Codes');
+
     }
 
     public function render()
