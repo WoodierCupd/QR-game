@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Score;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
@@ -37,6 +38,9 @@ class QuestionForm extends Component
         } else{
             dd('U Dumb!');
         }
+//        $score = Score::create([
+//
+//        ]);
     }
 
     public function render()
