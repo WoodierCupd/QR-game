@@ -12,6 +12,7 @@ class QuestionForm extends Component
     public $value;
     public $number;
     public $done;
+    public $score;
 
     public function mount(){
         $this->number = Cookie::get('number');
@@ -19,6 +20,7 @@ class QuestionForm extends Component
             ['student_number', '=', $this->number],
             ['question_id', '=', $this->question->id],
         ])->get();
+        $this->score = $score;
         if ($score->isEmpty()) {
             $this->done = false;
         } else {
@@ -53,6 +55,7 @@ class QuestionForm extends Component
             'question_id' => $this->question->id,
             'correct' => $correct,
         ]);
+        $this->score = $score;
         $this->done = true;
     }
 
