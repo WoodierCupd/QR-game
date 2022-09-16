@@ -11,9 +11,19 @@ class QuestionForm extends Component
     public $question;
     public $value;
     public $number;
+    public $done;
 
     public function mount(){
         $this->number = Cookie::get('number');
+        $score = Score::where([
+            ['student_number', '=', $this->number],
+            ['question_id', '=', $this->question->id],
+        ])->get();
+        if ($score->isEmpty()) {
+            $this->done = false;
+        } else {
+            $this->done = true;
+        }
     }
 
     public function answer_a(){
@@ -33,7 +43,7 @@ class QuestionForm extends Component
 
     private function teacher()
     {
-        if ($this->value == $this->question->answer){
+        if ($this->value == strtolower( $this->question->answer)){
             $correct = true;
         } else{
             $correct = false;
@@ -43,6 +53,7 @@ class QuestionForm extends Component
             'question_id' => $this->question->id,
             'correct' => $correct,
         ]);
+        $this->done = true;
     }
 
     public function render()
