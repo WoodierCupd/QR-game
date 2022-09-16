@@ -2,12 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
 class QuestionForm extends Component
 {
     public $question;
     public $value;
+    public $number;
+
+    public function mount(){
+        $this->number = Cookie::get('number');
+    }
 
     public function answer_a(){
         $this->value = 'a';
