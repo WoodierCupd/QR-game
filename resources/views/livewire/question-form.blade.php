@@ -10,13 +10,11 @@
         </div>
     @else
         <div class="text-3xl">
-            <p>
-                @if($score->correct == true)
-                    Je hebt de vraag correct beantwoord
-                @else
-                    Je hebt de vraag fout beantwoord
-                @endif
-            </p>
+            @if(isset($score->correct))
+                <p>@if($score->correct == true) Je hebt de vraag correct beantwoord. @else Je hebt de vraag fout beantwoord. @endif</p>
+            @else
+                <p>Je hebt deze vraag al beantwoord.</p>
+            @endif
         </div>
     @endif
 </div>
