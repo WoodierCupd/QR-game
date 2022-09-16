@@ -34,15 +34,15 @@ class QuestionForm extends Component
     private function teacher()
     {
         if ($this->value == $this->question->answer){
-            dd('Nice!');
+            $correct = true;
         } else{
-            dd('U Dumb!');
+            $correct = false;
         }
-//        $score = Score::create([
-//            'student_number' => $this->number,
-//            'question_id' => $this->question->id,
-//            'correct' => true,
-//        ]);
+        $score = Score::create([
+            'student_number' => $this->number,
+            'question_id' => $this->question->id,
+            'correct' => $correct,
+        ]);
     }
 
     public function render()
