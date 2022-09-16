@@ -39,7 +39,9 @@ class QuestionForm extends Component
             dd('U Dumb!');
         }
 //        $score = Score::create([
-//
+//            'student_number' => $this->number,
+//            'question_id' => $this->question->id,
+//            'correct' => true,
 //        ]);
     }
 
