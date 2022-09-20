@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('verify', function (Blueprint $table) {
+        Schema::create('verify_requests', function (Blueprint $table) {
             $table->id();
             $table->string('student_number');
             $table->unsignedBigInteger('question_id');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('verify');
+        Schema::dropIfExists('verify_requests');
     }
 };
