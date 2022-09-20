@@ -21,7 +21,8 @@
                     <h3 class="text-3xl text-white">{{$request->question}}</h3>
                     <div class="w-full p-1 md:p-2">
                         <p>{{$request->getQuestion->question}}</p>
-                        <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='{{asset("storage/{$request->image_path}")}}'>
+                        <a href="{{route('verify', $request->id)}}"><img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='{{asset("storage/{$request->image_path}")}}'>
+                        </a>
                     </div>
                 </div>
                 @endforeach

@@ -23,6 +23,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/question/{question}', function (\App\Models\Question $question) {
     return view('question')->with(compact('question'));
-})->middleware(['auth'])->name('question');
+})->name('question');
+
+Route::get('/verify/{verify_request}', function (\App\Models\verify_request $verify_request) {
+    return view('verify')->with(compact('verify_request'));
+})->middleware(['auth'])->name('verify');
 
 require __DIR__.'/auth.php';
