@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Question;
 use App\Models\Score;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
@@ -37,8 +38,9 @@ class QuestionForm extends Component
         $this->validate([
             'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 10MB Max
         ]);
-        $date = date('Y-m-d_H:i:s');
         $picture = $this->picture->store('public');
+        Question::find($this->question->id)->update(['image_path' => $picture]);
+        dd(Question::find($this->question->id));
     }
 
     public function answer_a(){
