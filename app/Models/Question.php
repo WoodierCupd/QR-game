@@ -16,5 +16,6 @@ class Question extends Model
         'option_c',
         'answer',
         'qr_path',
+        'type',
     ];
 }

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('questions', function (Blueprint $table) {
             $table->string('qr_path')->nullable();
+            $table->string('type');
         });
     }
 
