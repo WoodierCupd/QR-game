@@ -16,7 +16,7 @@
         @else
             <div class="text-3xl">
                 @if(isset($score->correct))
-                    <p>@if($score->correct == true) Je hebt de vraag correct beantwoord. @else Je hebt de vraag fout beantwoord. @endif</p>
+                    <p>@if($score->correct) Je hebt de vraag correct beantwoord. @else Je hebt de vraag fout beantwoord. @endif</p>
                 @else
                     <p>Je hebt deze vraag al beantwoord.</p>
                 @endif
