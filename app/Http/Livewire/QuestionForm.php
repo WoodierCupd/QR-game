@@ -39,7 +39,7 @@ class QuestionForm extends Component
             'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 10MB Max
         ]);
         $picture = $this->picture->store('public');
-        Question::find($this->question->id)->update(['image_path' => strstr($picture, '/')]);
+//        Question::find($this->question->id)->update(['image_path' => strstr($picture, '/')]);
     }
 
     public function answer_a(){

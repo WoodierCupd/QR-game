@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->string('qr_path')->nullable();
-            $table->string('type');
+        Schema::create('verify', function (Blueprint $table) {
+            $table->id();
+            $table->string('student_number');
+            $table->unsignedBigInteger('question_id');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->string('image_path');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('verify');
     }
 };
