@@ -27,8 +27,12 @@ class QuestionForm extends Component
             ['student_number', '=', $this->number],
             ['question_id', '=', $this->question->id],
         ])->get();
+        $verify = verify_request::where([
+            ['student_number', '=', $this->number],
+            ['question_id', '=', $this->question->id],
+        ])->get();
         $this->score = $score;
-        if ($score->isEmpty()) {
+        if ($score->isEmpty() && $verify->isEmpty()) {
             $this->done = false;
         } else {
             $this->done = true;
