@@ -35,11 +35,10 @@ class QuestionForm extends Component
 
     public function save(){
         $this->validate([
-            'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 1MB Max
+            'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 10MB Max
         ]);
         $date = date('Y-m-d_H:i:s');
         $picture = $this->picture->store('public');
-//        Storage::disk('public')->put("review/{$this->number}-{$date}", $this->picture);
     }
 
     public function answer_a(){
