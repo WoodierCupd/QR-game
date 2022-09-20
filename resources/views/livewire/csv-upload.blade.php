@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 @endforeach
-            <h2 class="text-5xl pb-3">QR Codes:</h2>
+            <h2 class="text-5xl pb-3 mt-8">QR Codes:</h2>
             <div class="flex flex-wrap -m-1 md:-m-2">
                 @foreach($questions as $question)
                     <div class="flex flex-wrap w-full md:w-1/2 lg:w-1/3 mb-3">
