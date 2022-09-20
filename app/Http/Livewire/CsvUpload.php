@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Question;
+use App\Models\verify_request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -15,6 +16,7 @@ class CsvUpload extends Component
 
     public $file;
     public $questions;
+    public $verify_requests;
 
     public function save()
     {
@@ -71,6 +73,7 @@ class CsvUpload extends Component
 
     public function render()
     {
+        $this->verify_requests = verify_request::all();
         $this->questions = Question::all();
         return view('livewire.csv-upload');
     }

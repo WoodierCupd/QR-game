@@ -15,6 +15,17 @@
     </div>
     <div class="overflow-hidden">
         <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+            <h2 class="text-5xl pb-3">Verify requests:</h2>
+                @foreach($verify_requests as $request)
+                <div class="flex flex-wrap w-full md:w-1/2 lg:w-1/3 mb-3">
+                    <h3 class="text-3xl text-white">{{$request->question}}</h3>
+                    <div class="w-full p-1 md:p-2">
+                        <p>{{$request->getQuestion->question}}</p>
+                        <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='{{asset("storage/{$request->image_path}")}}'>
+                    </div>
+                </div>
+                @endforeach
+            <h2 class="text-5xl pb-3">QR Codes:</h2>
             <div class="flex flex-wrap -m-1 md:-m-2">
                 @foreach($questions as $question)
                     <div class="flex flex-wrap w-full md:w-1/2 lg:w-1/3 mb-3">

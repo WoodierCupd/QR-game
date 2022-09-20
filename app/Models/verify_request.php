@@ -13,4 +13,10 @@ class verify_request extends Model
         'question_id',
         'image_path',
     ];
+
+    public function getQuestion()
+    {
+        return $this->belongsTo(Question::class, 'question_id', 'id');
+
+    }
 }

@@ -13,4 +13,10 @@ class Score extends Model
         'question_id',
         'correct',
     ];
+
+    public function getQuestion()
+    {
+        return $this->belongsTo(Question::class, 'question_id', 'id');
+
+    }
 }
