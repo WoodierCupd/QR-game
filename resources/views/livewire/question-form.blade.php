@@ -1,6 +1,6 @@
 @if (Cookie::get('number') === null)
     <div class="flex flex-col w-full items-center ">
-        <a href="{{route('welcome')}}"><p class="text-5xl font-bold underline">Please enter your student number here!</p></a>
+        <a href="{{route('welcome')}}"><p class="text-5xl font-bold underline">Vul hier eerst je leerling nummer in!</p></a>
     </div>
 @else
     <div class="flex flex-col w-full items-center ">

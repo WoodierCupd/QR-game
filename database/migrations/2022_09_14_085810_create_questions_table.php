@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('original_id');
             $table->string('question');
-            $table->string('option_a');
-            $table->string('option_b');
-            $table->string('option_c');
-            $table->string('answer');
+            $table->string('option_a')->nullable();
+            $table->string('option_b')->nullable();
+            $table->string('option_c')->nullable();
+            $table->string('answer')->nullable();
             $table->timestamps();
         });
     }
