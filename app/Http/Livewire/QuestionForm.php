@@ -38,7 +38,7 @@ class QuestionForm extends Component
             'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 1MB Max
         ]);
         $date = date('Y-m-d_H:i:s');
-        $picture = $this->picture->store('review');
+        $picture = $this->picture->store('public');
 //        Storage::disk('public')->put("review/{$this->number}-{$date}", $this->picture);
     }
 
