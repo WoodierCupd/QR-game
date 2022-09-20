@@ -34,7 +34,8 @@
                     <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Upload foto</button>
                 </form>
             @else
-{{--                TODO: of je het antwoord goed word / controleren docent--}}
+                <p>We kijken het nog na!</p>
+{{--             TODO: Kijken of je het al hebt ingeleverd / kijken of het is na gekeken en geef aan of het goed of slecht was--}}
             @endif
         @endif
     </div>

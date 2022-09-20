@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Question;
 use App\Models\Score;
+use App\Models\verify_request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
@@ -39,7 +40,12 @@ class QuestionForm extends Component
             'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 10MB Max
         ]);
         $picture = $this->picture->store('public');
-//        Question::find($this->question->id)->update(['image_path' => strstr($picture, '/')]);
+        $verify = verify_request::create([
+            'student_number' => $this->number,
+            'question_id' => $this->question->id,
+            'image_path' => strstr($picture, '/'),
+        ]);
+        $this->done = true;
     }
 
     public function answer_a(){
