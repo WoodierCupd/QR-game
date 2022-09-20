@@ -4,15 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\Score;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
 use Livewire\Component;
 
 class QuestionForm extends Component
 {
+    use WithFileUploads;
+
     public $question;
     public $value;
     public $number;
     public $done;
     public $score;
+    public $picture;
 
     public function mount(){
         $this->number = Cookie::get('number');
@@ -26,6 +31,15 @@ class QuestionForm extends Component
         } else {
             $this->done = true;
         }
+    }
+
+    public function save(){
+        $this->validate([
+            'picture' => 'mimes:jpeg,jpg,png,gif|required|max:10000', // 1MB Max
+        ]);
+        $date = date('Y-m-d_H:i:s');
+        $picture = $this->picture->store('review');
+//        Storage::disk('public')->put("review/{$this->number}-{$date}", $this->picture);
     }
 
     public function answer_a(){
