@@ -19,7 +19,7 @@
                         @if(isset($score->correct))
                             <p>@if($score->correct) Je hebt de vraag correct beantwoord. @else Je hebt de vraag fout beantwoord. @endif</p>
                         @else
-                            <p>Je hebt deze vraag al beantwoord.</p>
+                            <p>Je hebt deze vraag al beantwoord. Het antwoord was @if($score_data[0]->correct == 1) correct. @else fout. @endif</p>
                         @endif
                     </div>
                 @endif
@@ -35,11 +35,10 @@
                 </form>
             @else
                 @if($score_data->isEmpty())
-                    <p>We kijken het nog na!</p>
+                    <p>We kijken het nog na.</p>
                 @else
-                    <p>We hebben het nagekeken en je antwoord was @if($score_data[0]->correct == 1) correct @else fout @endif</p>
+                    <p>We hebben het nagekeken en je antwoord was @if($score_data[0]->correct == 1) correct. @else fout. @endif</p>
                 @endif
-{{--             TODO: Kijken of je het al hebt ingeleverd / kijken of het is na gekeken en geef aan of het goed of slecht was--}}
             @endif
         @endif
     </div>

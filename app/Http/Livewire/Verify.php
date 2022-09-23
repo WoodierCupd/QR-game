@@ -29,8 +29,8 @@ class Verify extends Component
                 'question_id' => $this->verify_request->question_id,
                 'correct' => 1,
             ]);
-            verify_request::find($this->verify_request->id)->delete();
             Storage::delete("public.{$this->verify_request->image_path}");
+            verify_request::find($this->verify_request->id)->delete();
             return redirect()->to(route('dashboard'));
         } else {
             $score = Score::create([
@@ -38,8 +38,8 @@ class Verify extends Component
                 'question_id' => $this->verify_request->question_id,
                 'correct' => 0,
             ]);
-            verify_request::find($this->verify_request->id)->delete();
             Storage::delete($this->verify_request->image_path);
+            verify_request::find($this->verify_request->id)->delete();
             return redirect()->to(route('dashboard'));
         }
     }
