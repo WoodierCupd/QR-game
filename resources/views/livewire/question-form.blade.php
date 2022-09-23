@@ -34,7 +34,11 @@
                     <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Upload foto</button>
                 </form>
             @else
-                <p>We kijken het nog na!</p>
+                @if($score_data->isEmpty())
+                    <p>We kijken het nog na!</p>
+                @else
+                    <p>We hebben het nagekeken en je antwoord was @if($score_data[0]->correct == 1) correct @else fout @endif</p>
+                @endif
 {{--             TODO: Kijken of je het al hebt ingeleverd / kijken of het is na gekeken en geef aan of het goed of slecht was--}}
             @endif
         @endif

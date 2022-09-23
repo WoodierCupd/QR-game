@@ -20,6 +20,7 @@ class QuestionForm extends Component
     public $done;
     public $score;
     public $picture;
+    public $score_data;
 
     public function mount(){
         $this->number = Cookie::get('number');
@@ -37,6 +38,7 @@ class QuestionForm extends Component
         } else {
             $this->done = true;
         }
+        $this->score_data = Score::where('student_number', '=', $this->number)->where('question_id', '=', $this->question->id)->get();
     }
 
     public function save(){
