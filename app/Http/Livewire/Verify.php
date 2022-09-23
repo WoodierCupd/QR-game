@@ -6,7 +6,9 @@ use Livewire\Component;
 
 class Verify extends Component
 {
-    public function render()
+    public $verify_request;
+
+public function render()
     {
         return view('livewire.verify');
     }
