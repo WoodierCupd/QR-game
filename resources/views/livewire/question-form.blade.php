@@ -13,10 +13,10 @@
                     <button wire:click="answer_a" class="bg-white text-black rounded p-1.5"><p class="text-xl text-left">A. {{$question->option_a}}</p></button>
                     <button wire:click="answer_b" class="bg-white text-black rounded p-1.5 mt-2.5"><p class="text-xl text-left">B. {{$question->option_b}}</p></button>
                     @if($question->option_c != null)
-                    <button wire:click="answer_c" class="bg-white text-black rounded p-1.5 mt-2.5"><p class="text-xl">C. {{$question->option_c}}</p></button>
+                    <button wire:click="answer_c" class="bg-white text-black rounded p-1.5 mt-2.5"><p class="text-xl text-left">C. {{$question->option_c}}</p></button>
                     @endif
                     @if($question->option_d != null)
-                    <button wire:click="answer_d" class="bg-white text-black rounded p-1.5 mt-2.5"><p class="text-xl">D. {{$question->option_d}}</p></button>
+                    <button wire:click="answer_d" class="bg-white text-black rounded p-1.5 mt-2.5"><p class="text-xl text-left">D. {{$question->option_d}}</p></button>
                     @endif
                 </div>
             @else
