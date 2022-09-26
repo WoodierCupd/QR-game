@@ -51,7 +51,7 @@
                     <p>{{$question->question}}</p>
                 </div>
                 <form wire:submit.prevent="open_save" class="flex flex-col">
-                    <input wire:model="open_answer" class="form-input m-0 p-1 rounded text-black h-10" name="open_answer" type="file">
+                    <input wire:model="open_answer" class="form-input m-0 p-1 rounded text-black h-10" name="open_answer" type="text">
                     @error('open_answer') <span class="error">{{ $message }}</span> @enderror
                     <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Inleveren</button>
                 </form>
