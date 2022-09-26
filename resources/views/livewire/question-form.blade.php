@@ -45,6 +45,23 @@
                     <p>We hebben het nagekeken en je antwoord was @if($score_data[0]->correct == 1) correct. @else fout. @endif</p>
                 @endif
             @endif
+        @elseif($question->type == 3)
+            @if($done !== true)
+                <div class="text-3xl mb-4">
+                    <p>{{$question->question}}</p>
+                </div>
+                <form wire:submit.prevent="open_save" class="flex flex-col">
+                    <input wire:model="open_answer" class="form-input m-0 p-1 rounded text-black h-10" name="open_answer" type="file">
+                    @error('open_answer') <span class="error">{{ $message }}</span> @enderror
+                    <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Inleveren</button>
+                </form>
+            @else
+                @if($score_data->isEmpty())
+                    <p>We kijken het nog na.</p>
+                @else
+                    <p>We hebben het nagekeken en je antwoord was @if($score_data[0]->correct == 1) correct. @else fout. @endif</p>
+                @endif
+            @endif
         @endif
     </div>
 @endif
