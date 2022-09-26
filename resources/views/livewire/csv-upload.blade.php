@@ -21,8 +21,11 @@
                     <h3 class="text-3xl text-white">{{$request->question}}</h3>
                     <div class="w-full p-1 md:p-2">
                         <p>{{$request->getQuestion->question}}</p>
-                        <a href="{{route('verify', $request->id)}}"><img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='{{asset("storage/{$request->image_path}")}}'>
-                        </a>
+                        @if($request->image_path !== null)
+                            <a href="{{route('verify', $request->id)}}"><img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='{{asset("storage/{$request->image_path}")}}'></a>
+                        @else
+                            <a href="{{route('verify', $request->id)}}"><img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src='https://media.istockphoto.com/vectors/profile-verification-check-marks-icons-vector-illustration-vector-id1313547780?k=20&m=1313547780&s=612x612&w=0&h=dpYT_kesPq9p3wHVyXTXdMy71_o-YczCkG0zMrsNfiA='></a>
+                        @endif
                     </div>
                 </div>
                 @endforeach
