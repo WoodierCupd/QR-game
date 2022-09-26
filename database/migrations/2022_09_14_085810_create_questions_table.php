@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('option_a')->nullable();
             $table->string('option_b')->nullable();
             $table->string('option_c')->nullable();
+            $table->string('option_d')->nullable();
             $table->string('answer')->nullable();
             $table->timestamps();
         });

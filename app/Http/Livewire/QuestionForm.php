@@ -71,6 +71,11 @@ class QuestionForm extends Component
         $this->teacher();
     }
 
+    public function answer_d(){
+        $this->value = 'd';
+        $this->teacher();
+    }
+
     private function teacher()
     {
         if ($this->value == strtolower( $this->question->answer)){
