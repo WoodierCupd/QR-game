@@ -21,6 +21,7 @@ class QuestionForm extends Component
     public $score;
     public $picture;
     public $score_data;
+    public $open_answer;
 
     public function mount(){
         $this->number = Cookie::get('number');
@@ -54,6 +55,10 @@ class QuestionForm extends Component
             'image_path' => strstr($picture, '/'),
         ]);
         $this->done = true;
+    }
+
+    public function open_save(){
+        dd($this->open_answer);
     }
 
     public function answer_a(){
