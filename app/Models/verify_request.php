@@ -12,6 +12,7 @@ class verify_request extends Model
         'student_number',
         'question_id',
         'image_path',
+        'open_answer',
     ];
 
     public function getQuestion()

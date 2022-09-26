@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('student_number');
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
+            $table->string('open_answer')->nullable();
             $table->timestamps();
         });
     }
