@@ -24,21 +24,23 @@ class QuestionForm extends Component
 
     public function mount(){
         $this->number = Cookie::get('number');
-        $score = Score::where([
-            ['student_number', '=', $this->number],
-            ['question_id', '=', $this->question->id],
-        ])->get();
-        $verify = verify_request::where([
-            ['student_number', '=', $this->number],
-            ['question_id', '=', $this->question->id],
-        ])->get();
-        $this->score = $score;
-        if ($score->isEmpty() && $verify->isEmpty()) {
-            $this->done = false;
-        } else {
-            $this->done = true;
+        if ($this->number !== null){
+            $score = Score::where([
+                ['student_number', '=', $this->number],
+                ['question_id', '=', $this->question->id],
+            ])->get();
+            $verify = verify_request::where([
+                ['student_number', '=', $this->number],
+                ['question_id', '=', $this->question->id],
+            ])->get();
+            $this->score = $score;
+            if ($score->isEmpty() && $verify->isEmpty()) {
+                $this->done = false;
+            } else {
+                $this->done = true;
+            }
+            $this->score_data = Score::where('student_number', '=', $this->number)->where('question_id', '=', $this->question->id)->get();
         }
-        $this->score_data = Score::where('student_number', '=', $this->number)->where('question_id', '=', $this->question->id)->get();
     }
 
     public function save(){
