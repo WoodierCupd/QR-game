@@ -38,7 +38,7 @@ class Verify extends Component
                 'question_id' => $this->verify_request->question_id,
                 'correct' => 0,
             ]);
-            Storage::delete($this->verify_request->image_path);
+            Storage::delete("public.{$this->verify_request->image_path}");
             verify_request::find($this->verify_request->id)->delete();
             return redirect()->to(route('dashboard'));
         }
