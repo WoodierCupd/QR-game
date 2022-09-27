@@ -7,6 +7,9 @@
                 @error('file') <span class="error">{{ $message }}</span> @enderror
                 <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Generate QR-Codes</button>
             </form>
+            <div class="flex flex-col">
+                <button wire:click="pdf" class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Generate PDF</button>
+            </div>
             <form wire:submit.prevent="deleteAll" class="flex flex-col">
                 <button class="btn h-10 font-bold bg-black rounded mt-2.5" type="submit">Delete all QR-Codes</button>
                 @if(session()->has('message')) <span class="alert alert-success">{{ session('message') }}</span> @endif
