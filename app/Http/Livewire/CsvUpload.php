@@ -72,6 +72,10 @@ class CsvUpload extends Component
 
     }
 
+    public function pdf(){
+        return redirect()->to(route('pdf'));
+    }
+
     public function render()
     {
         $this->verify_requests = verify_request::all();

@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>{{ $title }}</h1>
-<div class="grid grid-cols-2 gap-4">
+<div class="w-full flex flex-col justify-center">
 @foreach($questions as $question)
     <div>
         <h3 class="text-3xl text-center">{{$question['original_id']}}</h3>
