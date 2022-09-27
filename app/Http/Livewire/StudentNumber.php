@@ -22,12 +22,13 @@ class StudentNumber extends Component
     }
 
     public function mount(){
-        if (Cookie::get('number') !== null){
+        $student = Cookie::get('number');
+        if ($student !== null){
             $this->scores = Score::where([
-                ['student_number', '=', $this->number],
+                ['student_number', '=', $student],
             ])->count();
             $this->verify_requests = verify_request::where([
-                ['student_number', '=', $this->number],
+                ['student_number', '=', $student],
             ])->count();
         }
     }
