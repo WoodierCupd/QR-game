@@ -21,6 +21,7 @@ class QuestionForm extends Component
     public $score;
     public $picture;
     public $score_data;
+    public $open_answer;
 
     public function mount(){
         $this->number = Cookie::get('number');
@@ -52,6 +53,18 @@ class QuestionForm extends Component
             'student_number' => $this->number,
             'question_id' => $this->question->id,
             'image_path' => strstr($picture, '/'),
+        ]);
+        $this->done = true;
+    }
+
+    public function open_save(){
+        $this->validate([
+            'open_answer' => 'required|max:255',
+        ]);
+        $verify = verify_request::create([
+            'student_number' => $this->number,
+            'question_id' => $this->question->id,
+            'open_answer' => $this->open_answer,
         ]);
         $this->done = true;
     }

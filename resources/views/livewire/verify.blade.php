@@ -5,7 +5,11 @@
         <button wire:click="bad" class="btn w-28 h-10 font-bold bg-red-500 rounded">Fout</button>
     </div>
     <div class="sm:w-2/3 text-xl flex flex-col justify-center items-center">
-        <h1>{{$verify_request->getQuestion->question}}</h1>
-        <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg w-fit" src='{{asset("storage/{$verify_request->image_path}")}}'>
+        <h1 class="font-extrabold">{{$verify_request->getQuestion->question}}</h1>
+        @if($verify_request->image_path !== null)
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg w-fit" src='{{asset("storage/{$verify_request->image_path}")}}'>
+        @elseif($verify_request->open_answer !== null)
+            <p>{{$verify_request->open_answer}}</p>
+        @endif
     </div>
 </div>
