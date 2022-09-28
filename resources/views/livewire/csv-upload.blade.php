@@ -37,7 +37,7 @@
                             <a href="{{route('question', $question->id)}}">
                                 <img alt="gallery" class="qr-codes block object-cover object-center w-full h-full rounded-lg" src="{{asset($question['qr_path'])}}">
                                 <div class="scores hidden">
-                                    <canvas id="myChart"></canvas>
+                                    <canvas class="myChart"></canvas>
                                 </div>
                             </a>
                             <a href="{{route('question', $question->id)}}"></a>
@@ -59,31 +59,34 @@
                 }
             );
         });
-        const data = {
-            labels: [
-                'Fout',
-                'Goed',
-                'Nakijken'
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
+        $('.hover-js').each(function() {
+            var currentElement = $('div .myChart' ,this);
+            const data = {
+                labels: [
+                    'Fout',
+                    'Goed',
+                    'Nakijken'
                 ],
-                hoverOffset: 4
-            }]
-        };
-        const config = {
-            type: 'doughnut',
-            data: data,
-        };
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(124,252,0)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
+            const myChart = new Chart(
+                currentElement,
+                config
+            );
+        });
     </script>
 </div>
 
