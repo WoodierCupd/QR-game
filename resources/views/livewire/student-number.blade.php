@@ -2,7 +2,7 @@
     <h1 class="font-extrabold text-6xl mb-2.5 font-rammetto">QR-QUIZ</h1>
     @if (Cookie::get('number') !== null)
         <div>
-            <p>Studenten nummer: <span class="font-extrabold">{{request()->cookie('number')}}</span></p>
+            <p>Studenten nummer: <span class="font-extrabold">{{request()->cookie('number')}}</span>.</p>
             @if($scores > 1)
                 <p>Je hebt <span class="font-extrabold">{{$scores}}</span> vragen beantwoord.</p>
             @elseif($scores == 1)
