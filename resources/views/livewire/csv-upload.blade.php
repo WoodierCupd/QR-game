@@ -1,4 +1,5 @@
 <div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <div class="mt-5 flex flex-col items-center">
         <div class="flex flex-col" style="max-width: 95%">
             <form wire:submit.prevent="save" class="flex flex-col">
@@ -31,13 +32,27 @@
                 @foreach($questions as $question)
                     <div class="flex flex-wrap w-full md:w-1/2 lg:w-1/3 mb-3">
                         <h3 class="text-3xl text-white">{{$question['original_id']}}</h3>
-                        <div class="w-full p-1 md:p-2">
-                            <a href="{{route('question', $question->id)}}"><img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src="{{asset($question['qr_path'])}}"></a>
+                        <div class="w-full p-1 md:p-2 hover-js">
+                            <a href="{{route('question', $question->id)}}"><img alt="gallery" class="qr-codes block object-cover object-center w-full h-full rounded-lg" src="{{asset($question['qr_path'])}}"></a>
+                            <a href="{{route('question', $question->id)}}"><img alt="gallery" class="scores hidden object-cover object-center w-full h-full rounded-lg" src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"></a>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+            $('.hover-js').hover( function(){
+                    $('a .qr-codes' ,this).css('display', 'none');
+                    $('a .scores' ,this).css('display', 'block');
+                },
+                function(){
+                    $('a .qr-codes' ,this).css('display', 'block');
+                    $('a .scores' ,this).css('display', 'none');
+                }
+            );
+        });
+    </script>
 </div>
 
