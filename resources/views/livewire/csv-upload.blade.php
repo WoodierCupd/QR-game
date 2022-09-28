@@ -21,7 +21,7 @@
             <h2 class="text-5xl pb-3">Verify requests:</h2>
             <div class="w-full grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
                 @foreach($verify_requests as $request)
-                    <a class="bg-gray-800 text-center py-5 rounded" href="{{route('verify', $request->id)}}">
+                    <a class="bg-black text-center py-5 rounded" href="{{route('verify', $request->id)}}">
                         <p class="w-full text-3xl">Verify - {{$request->getQuestion->original_id}}</p>
                     </a>
                 @endforeach
