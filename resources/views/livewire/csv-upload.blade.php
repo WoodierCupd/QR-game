@@ -63,6 +63,7 @@
             var currentElement = $('div .myChart' ,this);
             var good = {!! $scores->where('question_id', '=', '149')->where('correct', '=', '1')->count() !!};
             var wrong = {!! $scores->where('question_id', '=', '149')->where('correct', '=', '0')->count() !!};
+            var verify = {!! $verify_requests->where('question_id', '=', '149')->count() !!};
             const data = {
                 labels: [
                     'Fout',
@@ -71,7 +72,7 @@
                 ],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [wrong, good, 100],
+                    data: [wrong, good, verify],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(124,252,0)',
