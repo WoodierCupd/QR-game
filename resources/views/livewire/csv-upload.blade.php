@@ -37,12 +37,43 @@
                             <a href="{{route('question', $question->id)}}">
                                 <img alt="gallery" class="qr-codes block object-cover object-center w-full h-full rounded-lg" src="{{asset($question['qr_path'])}}">
                                 <div class="scores hidden">
-                                    <canvas class="myChart"></canvas>
+                                    <canvas id="{{$question->id}}" class="myChart"></canvas>
                                 </div>
                             </a>
                             <a href="{{route('question', $question->id)}}"></a>
                         </div>
                     </div>
+                    <script>
+                        var currentElement = $('#{!! $question->id !!}');
+                        var good = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '1')->count() !!};
+                        var wrong = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '0')->count() !!};
+                        var verify = {!! $verify_requests->where('question_id', '=', $question->id)->count() !!};
+                        var data = {
+                            labels: [
+                                'Fout',
+                                'Goed',
+                                'Nakijken'
+                            ],
+                            datasets: [{
+                                label: 'results',
+                                data: [wrong, good, verify],
+                                backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(124,252,0)',
+                                    'rgb(255, 205, 86)'
+                                ],
+                                hoverOffset: 4
+                            }]
+                        };
+                        var config = {
+                            type: 'doughnut',
+                            data: data,
+                        };
+                        var myChart = new Chart(
+                            currentElement,
+                            config
+                        );
+                    </script>
                 @endforeach
             </div>
         </div>
@@ -57,37 +88,6 @@
                     $('a .qr-codes' ,this).css('display', 'block');
                     $('div' ,this).css('display', 'none');
                 }
-            );
-        });
-        $('.hover-js').each(function() {
-            var currentElement = $('div .myChart' ,this);
-            var good = {!! $scores->where('question_id', '=', '149')->where('correct', '=', '1')->count() !!};
-            var wrong = {!! $scores->where('question_id', '=', '149')->where('correct', '=', '0')->count() !!};
-            var verify = {!! $verify_requests->where('question_id', '=', '149')->count() !!};
-            const data = {
-                labels: [
-                    'Fout',
-                    'Goed',
-                    'Nakijken'
-                ],
-                datasets: [{
-                    label: 'results',
-                    data: [wrong, good, verify],
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(124,252,0)',
-                        'rgb(255, 205, 86)'
-                    ],
-                    hoverOffset: 4
-                }]
-            };
-            const config = {
-                type: 'doughnut',
-                data: data,
-            };
-            const myChart = new Chart(
-                currentElement,
-                config
             );
         });
     </script>
