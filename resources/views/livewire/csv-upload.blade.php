@@ -71,7 +71,7 @@
                     'Nakijken'
                 ],
                 datasets: [{
-                    label: 'My First Dataset',
+                    label: 'results',
                     data: [wrong, good, verify],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
