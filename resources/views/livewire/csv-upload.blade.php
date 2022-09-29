@@ -43,37 +43,64 @@
                             <a href="{{route('question', $question->id)}}"></a>
                         </div>
                     </div>
-                    <script>
-                        var currentElement = $('#{!! $question->id !!}');
-                        var good = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '1')->count() !!};
-                        var wrong = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '0')->count() !!};
-                        var verify = {!! $verify_requests->where('question_id', '=', $question->id)->count() !!};
-                        var data = {
-                            labels: [
-                                'Fout',
-                                'Goed',
-                                'Nakijken'
-                            ],
-                            datasets: [{
-                                label: 'results',
-                                data: [wrong, good, verify],
-                                backgroundColor: [
-                                    'rgb(255, 99, 132)',
-                                    'rgb(124,252,0)',
-                                    'rgb(255, 205, 86)'
+                    @if($scores->where('question_id', '=', $question->id)->count() == 0 && $verify_requests->where('question_id', '=', $question->id)->count() == 0)
+                        <script>
+                            var currentElement = $('#{!! $question->id !!}');
+                            var data = {
+                                labels: [
+                                    'Nog geen data',
                                 ],
-                                hoverOffset: 4
-                            }]
-                        };
-                        var config = {
-                            type: 'doughnut',
-                            data: data,
-                        };
-                        var myChart = new Chart(
-                            currentElement,
-                            config
-                        );
-                    </script>
+                                datasets: [{
+                                    label: 'results',
+                                    data: [1],
+                                    backgroundColor: [
+                                        'rgb(0, 0, 0)',
+                                    ],
+                                    hoverOffset: 4
+                                }]
+                            };
+                            var config = {
+                                type: 'doughnut',
+                                data: data,
+                            };
+                            var myChart = new Chart(
+                                currentElement,
+                                config
+                            );
+                        </script>
+                    @else
+                        <script>
+                            var currentElement = $('#{!! $question->id !!}');
+                            var good = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '1')->count() !!};
+                            var wrong = {!! $scores->where('question_id', '=', $question->id)->where('correct', '=', '0')->count() !!};
+                            var verify = {!! $verify_requests->where('question_id', '=', $question->id)->count() !!};
+                            var data = {
+                                labels: [
+                                    'Fout',
+                                    'Goed',
+                                    'Nakijken'
+                                ],
+                                datasets: [{
+                                    label: 'results',
+                                    data: [wrong, good, verify],
+                                    backgroundColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(124,252,0)',
+                                        'rgb(255, 205, 86)'
+                                    ],
+                                    hoverOffset: 4
+                                }]
+                            };
+                            var config = {
+                                type: 'doughnut',
+                                data: data,
+                            };
+                            var myChart = new Chart(
+                                currentElement,
+                                config
+                            );
+                        </script>
+                    @endif
                 @endforeach
             </div>
         </div>
